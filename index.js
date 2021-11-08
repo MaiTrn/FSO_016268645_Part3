@@ -31,9 +31,9 @@ app.use(express.json());
 app.use(cors());
 
 morgan.token("body", (request) => {
-  return request.body ? JSON.stringify(request.body) : "";
+  return (request.body.name || request.body.number) ? JSON.stringify(request.body) : "";
 });
-app.use(morgan("tiny"));
+app.use(morgan(":method :url :status :res[content-length] - :response-time ms :body"));
 
 app.get("/api/persons", (request, response) => {
   response.json(persons);
@@ -64,8 +64,6 @@ const generateID = () => {
   return id;
 };
 
-//logging body
-app.use(morgan(":body"));
 app.post("/api/persons", (request, response) => {
   const body = request.body;
   if (!body.name || !body.number) {
