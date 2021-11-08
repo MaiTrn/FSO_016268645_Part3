@@ -6,7 +6,11 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:ui": "rm -rf build && cd ../Fullstackopen/'Part 3'/phonebook && yarn run build --prod && cp -r build ../../../phonebook-backend",
+    "deploy": "git push heroku master",
+    "deploy:full": "yarn run build:ui && git add -A && git commit -m UIbuild && git push && yarn run deploy",
+    "logs:prod": "heroku logs --tail"
   },
   "author": "Mai Tran",
   "license": "MIT",
