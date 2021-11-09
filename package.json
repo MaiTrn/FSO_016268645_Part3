@@ -10,7 +10,8 @@
     "build:ui": "rm -rf build && cd ../Fullstackopen/'Part 3'/phonebook && yarn run build --prod && cp -r build ../../../phonebook-backend",
     "deploy": "git push heroku master",
     "deploy:full": "yarn run build:ui && git add -A && git commit -m UIbuild && yarn run deploy",
-    "logs:prod": "heroku logs --tail"
+    "logs:prod": "heroku logs --tail",
+    "debug": "node index.js"
   },
   "author": "Mai Tran",
   "license": "MIT",
@@ -19,7 +20,9 @@
   },
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "mongoose": "^6.0.12",
     "morgan": "^1.10.0"
   }
 }
