@@ -71,7 +71,7 @@ app.put("/api/persons/:id", (request, response, next) => {
   const id = request.params.id;
   const body = request.body;
   if (!body.number) {
-    return response.status(404).json({ error: "Name or Number is missing!" });
+    return response.status(404).json({ error: "number is missing!" });
   }
   const person = {
     number: body.number,
